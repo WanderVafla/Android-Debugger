@@ -1,0 +1,14 @@
+level_battery = imageBattery_Label.cget("text")
+print(level_battery)
+if level_battery <= "0":
+        twenty = ImageTk.PhotoImage(Image.open("res\\icons\\20%.png").resize((15,15)))
+        imageBattery_Label.config(image=twenty)
+    elif level_battery <= "20":
+        fifty = ImageTk.PhotoImage(Image.open("res\\icons\\50%.png").resize((15,15)))
+        imageBattery_Label.config(image=fifty)
+    elif level_battery <= "50":
+        eighty = ImageTk.PhotoImage(Image.open("res\\icons\\80%.png").resize((15,15)))
+        imageBattery_Label.config(image=eighty)
+    elif level_battery <= "80":
+        one_hundred = ImageTk.PhotoImage(Image.open("res\\icons\\100%.png").resize((15,15)))
+        imageBattery_Label.config(image=one_hundred)
