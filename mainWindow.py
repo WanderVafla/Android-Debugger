@@ -17,25 +17,34 @@ statusBattery_Frame.pack()
 levelBattery_Label = ttk.Label(statusBattery_Frame, text=0)
 levelBattery_Label.grid(row=0, column=0)
 
-imageBattery_Label = ttk.Label()
+imageBattery_Label = ttk.Label(statusBattery_Frame)
+imageBattery_Label.grid(row=0, column=1)
 
-def change_photo_battery(label):
-    label.cget("text")
+
+def update_battery():
     
-    if label <= 0:
+    level_battery = imageBattery_Label.cget("text")
+    print(level_battery)
+    if level_battery <= "0":
         twenty = ImageTk.PhotoImage(Image.open("res\\icons\\20%.png").resize((15,15)))
-    elif label <= 20:
+        imageBattery_Label.config(image=twenty)
+    elif level_battery <= "20":
         fifty = ImageTk.PhotoImage(Image.open("res\\icons\\50%.png").resize((15,15)))
-    elif label <= 50:
+        imageBattery_Label.config(image=fifty)
+    elif level_battery <= "50":
         eighty = ImageTk.PhotoImage(Image.open("res\\icons\\80%.png").resize((15,15)))
-    elif label <= 80:
+        imageBattery_Label.config(image=eighty)
+    elif level_battery <= "80":
         one_hundred = ImageTk.PhotoImage(Image.open("res\\icons\\100%.png").resize((15,15)))
-    
+        imageBattery_Label.config(image=one_hundred)
+
+
+
         
-def update_all(label, root):
+def loop_update():
     while True:
-        label.config(text=getLevelBattery())
-        print(label.cget("text"))
+        levelBattery_Label.config(text=getLevelBattery())
+        update_battery()
         root.update()
         
-loop = update_all(levelBattery_Label, root)
+loop = loop_update()
